@@ -4,7 +4,8 @@ import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	const endpoint = "https://airtel.onlinegrowkaro.com/graphql"
+	const endpoint = "https://airtel.onlinegrowkaro.com/graphql" as string;
+
 	const graphQLClient = new GraphQLClient(endpoint);
 	const referringURL = ctx.req.headers?.referer || null;
 	const pathArr = ctx.query.postpath as Array<string>;
@@ -20,6 +21,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 				permanent: false,
 				destination: `${
 					`https://airtel.onlinegrowkaro.com/` + encodeURI(path as string)
+
 				}`,
 			},
 		};
